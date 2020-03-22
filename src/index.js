@@ -5,6 +5,9 @@ const add = document.getElementById("add");
 const minus = document.getElementById("minus");
 const number = document.querySelector("span");
 
+const form = document.querySelector("form");
+const input = document.querySelector("input");
+const ul = document.querySelector("ul");
 number.innerText = 0;
 const ADD = "ADD";
 const MINUS = "MINUS";
@@ -32,3 +35,18 @@ const handleMinus = () => {
 };
 add.addEventListener("click", handleAdd);
 minus.addEventListener("click", handleMinus);
+
+const createToDo = toDo => {
+  const li = document.createElement("li");
+  li.innerText = toDo;
+  ul.appendChild(li);
+};
+
+const onSubmit = e => {
+  e.preventDefault();
+  const toDo = input.value;
+  input.value = "";
+  createToDo(toDo);
+};
+
+form.addEventListener("submit", onSubmit);
